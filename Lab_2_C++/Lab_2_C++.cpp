@@ -80,6 +80,7 @@ void dynamic_variable() {
 
 int main()
 {
+	system("color F0");
 	setlocale(LC_ALL, "Rus");
 	int choice;
 	printf("Выберите режим работы программы:\n");
