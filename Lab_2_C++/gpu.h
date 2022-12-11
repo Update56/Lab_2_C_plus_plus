@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <string.h>
 
@@ -12,6 +12,7 @@ private:
 	int memory_size;
 	int power;
 	string model;
+	int price;
 public:
 	gpu(int clock_rate, int bandwidth, int memory_size, int power, string model);
 	gpu(int clock_rate);
@@ -29,4 +30,11 @@ public:
 	string get_model();
 	int get_power();
 	int get_bandwidt();
+	double& hash_rate(double& hash); // через ссылку
+	friend int get_price(gpu a);
+	friend int get_price(gpu a)
+	{
+		return a.price;
+	}
+	void null_model();
 };

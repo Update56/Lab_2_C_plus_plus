@@ -1,4 +1,4 @@
-#include "ram.h"
+ï»¿#include "ram.h"
 
 ram::ram(int clock_rate, int memory_size, string model, string type_memory)
 {
@@ -8,7 +8,7 @@ ram::ram(int clock_rate, int memory_size, string model, string type_memory)
 	this->type_memory = type_memory;
 }
 
-ram::ram(int memory_saze)
+ram::ram(int memory_size)
 {
 	this->memory_size = memory_size;
 }
@@ -20,19 +20,21 @@ ram::~ram() {
 }
 void ram::input()
 {
-	cout << "Ââåäèòå ìîäåëü, òèï, ÷àñòîòó è îáú¸ì ÎÇÓ (÷åðåç \"Enter\")\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¼Ð¾Ð´ÐµÐ»ÑŒ, Ñ‚Ð¸Ð¿, Ñ‡Ð°ÑÑ‚Ð¾Ñ‚Ñƒ, Ð¾Ð±ÑŠÑ‘Ð¼ Ð¸ Ñ†ÐµÐ½Ñƒ ÐžÐ—Ð£ (Ñ‡ÐµÑ€ÐµÐ· \"Enter\")\n";
 	cin >> model;
 	cin >> type_memory;
 	cin >> clock_rate;
 	cin >> memory_size;
+	cin >> price;
 };
 
 void ram::output()
 {
-	cout << "\nÎÇÓ\n\t-ìîäåëü: " << model;
-	cout << "\n\t-òèï ïàìÿòè: " << type_memory;
-	cout << "\n\t - ÷àñòîòà: " << clock_rate;
-	cout << "\n\t-îáú¸ì: " << memory_size;
+	cout << "\nÐžÐ—Ð£\n\t-Ð¼Ð¾Ð´ÐµÐ»ÑŒ: " << model;
+	cout << "\n\t-Ñ‚Ð¸Ð¿ Ð¿Ð°Ð¼ÑÑ‚Ð¸: " << type_memory;
+	cout << "\n\t - Ñ‡Ð°ÑÑ‚Ð¾Ñ‚Ð°: " << clock_rate;
+	cout << "\n\t-Ð¾Ð±ÑŠÑ‘Ð¼: " << memory_size;
+	cout << "\n\t-Ñ†ÐµÐ½Ð°: " << price;
 }
 
 void ram::set_clock_rate(int clock_rate)
@@ -73,4 +75,12 @@ string ram::get_model()
 string ram::get_type_memory()
 {
 	return type_memory;
+}
+
+void ram::null_model()
+{
+	if (model == "-")
+	{
+		throw "ÐÐµÑ‚ Ð²Ð²ÐµÐ´ÐµÐ½Ð° Ð¼Ð¾Ð´ÐµÐ»ÑŒ ÐžÐ—Ð£";
+	}
 }

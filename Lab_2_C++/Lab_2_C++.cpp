@@ -7,9 +7,11 @@ void static_variable()
 	pc_builder my_pc;
 	int choice;
 	my_pc.input();
+	
 	do
 	{
-		printf("\n1. Список комплектующих\n2. Проверить совместимость\n3. Оценка сборки\n4. Рекомендации\n5. Ввести новые комплектующие\n6. Выход\n");
+		my_pc.check_model();
+		printf("\n1. Список комплектующих\n2. Проверить совместимость\n3. Оценка сборки\n4. Рекомендации\n5. Ввести новые комплектующие\n6. Общая цена ПК и таможеная пошлина\n7. Производительность\n8. Увеличить частоту процессора\n56. Выход\n");
 		scanf("%i", &choice);
 		switch (choice)
 		{
@@ -29,13 +31,22 @@ void static_variable()
 			my_pc.input();
 			break;
 		case 6:
+			my_pc.Tarrif(my_pc);
+			break;
+		case 7:
+			my_pc.performance();
+			break;
+		case 8:
+			my_pc.add_cpu_clock();
+			break;
+		case 56:
 			break;
 		default:
 			printf("Неверный пункт меню");
 			break;
 		}
 
-	} while (choice != 6);
+	} while (choice != 56);
 
 	return;
 }
@@ -44,9 +55,11 @@ void dynamic_variable() {
 	int choice;
 	pc_builder* my_pc = new pc_builder;
 	my_pc->input();
+	my_pc->check_model();
 	do
 	{
-		printf("\n1. Список комплектующих\n2. Проверить совместимость\n3. Оценка сборки\n4. Рекомендации\n5. Ввести новые комплектующие\n6. Выход\n");
+		my_pc->check_model();
+		printf("\n1. Список комплектующих\n2. Проверить совместимость\n3. Оценка сборки\n4. Рекомендации\n5. Ввести новые комплектующие\n6. Общая цена ПК и таможеная пошлина\n7. Производительность\n8. Увеличить частоту процессора\n56. Выход\n");
 		scanf("%i", &choice);
 		switch (choice)
 		{
@@ -66,6 +79,15 @@ void dynamic_variable() {
 			my_pc->input();
 			break;
 		case 6:
+			my_pc->Tarrif(*my_pc);
+			break;
+		case 7: 
+			my_pc->performance();
+			break;
+		case 8:
+			my_pc->add_cpu_clock();
+			break;
+		case 56:
 			delete my_pc;
 			break;
 		default:
@@ -73,7 +95,7 @@ void dynamic_variable() {
 			break;
 		}
 
-	} while (choice != 6);
+	} while (choice != 56);
 
 	return;
 }

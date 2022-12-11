@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <string.h>
 
@@ -12,6 +12,7 @@ private:
 	int power;
 	string model;
 	string soket;
+	int price;
 public:
 	cpu(int amount_core, double clock_rate, int power, string model, string soket);
 	cpu(int amount_core);
@@ -29,4 +30,14 @@ public:
 	int get_power();
 	string get_model();
 	string get_soket();
+	friend int get_price(cpu a);
+	friend int get_price(cpu a)
+	{
+		return a.price;
+	}
+	double* flops(); //Через указатель
+	cpu operator + (double a);
+	cpu& operator ++ ();
+	cpu operator ++ (int unused);
+	void null_model();
 };

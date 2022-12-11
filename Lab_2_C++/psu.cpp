@@ -1,4 +1,4 @@
-#include "psu.h"
+Ôªø#include "psu.h"
 
 psu::psu(int power, string model)
 {
@@ -8,7 +8,7 @@ psu::psu(int power, string model)
 
 psu::psu(int power)
 {
-	this->power;
+	this->power = power;
 }
 psu::psu() {
 }
@@ -17,14 +17,16 @@ psu::~psu() {
 }
 void psu::input()
 {
-	cout << "¬‚Â‰ËÚÂ ÏÓ‰ÂÎ¸ Ë ÏÓ˘ÌÓÒÚ¸ ·ÎÓÍ‡ ÔËÚ‡ÌËˇ(˜ÂÂÁ \"Enter\")\n";
-	cin >> model;
+	cout << "–í–≤–µ–¥–∏—Ç–µ –º–æ–¥–µ–ª—å, –º–æ—â–Ω–æ—Å—Ç—å –∏ —Ü–µ–Ω—É –±–ª–æ–∫–∞ –ø–∏—Ç–∞–Ω–∏—è(—á–µ—Ä–µ–∑ \"Enter\")\n";
+	cin >> this->model;
 	cin >> power;
+	cin >> price;
 }
 void psu::output()
 {
-	cout << "\n¡ÎÓÍ ÔËÚ‡ÌËˇ:\n\t-ÏÓ‰ÂÎ¸: " << model;
-	cout << "\n\t-ÏÓ˘ÌÓÒÚ¸: " << power;
+	cout << "\n–ë–ª–æ–∫ –ø–∏—Ç–∞–Ω–∏—è:\n\t-–º–æ–¥–µ–ª—å: " << model;
+	cout << "\n\t-–º–æ—â–Ω–æ—Å—Ç—å: " << power;
+	cout << "\n\t-—Ü–µ–Ω–∞: " << price;
 }
 
 int psu::get_power()
@@ -47,3 +49,10 @@ void psu::set_model(string model)
 	this->model = model;
 }
 
+void psu::null_model()
+{
+	if (model == "-")
+	{
+		throw "–ù–µ—Ç –≤–≤–µ–¥–µ–Ω–∞ –º–æ–¥–µ–ª—å –±–ª–æ–∫–∞ –ø–∏—Ç–∞–Ω–∏—è";
+	}
+}

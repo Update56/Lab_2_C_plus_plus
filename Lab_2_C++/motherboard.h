@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <string.h>
 
@@ -10,6 +10,7 @@ private:
 	string model;
 	string soket;
 	string type_memory;
+	int price;
 public:
 	motherboard(string model, string soket, string type_memory);
 	motherboard(string soket);
@@ -23,4 +24,10 @@ public:
 	string get_model();
 	string get_soket();
 	string get_type_memory();
+	friend int get_price(motherboard a);
+	friend int get_price(motherboard a)
+	{
+		return a.price;
+	}
+	void null_model();
 };

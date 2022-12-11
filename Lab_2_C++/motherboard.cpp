@@ -1,4 +1,4 @@
-#include "motherboard.h"
+ï»¿#include "motherboard.h"
 
 motherboard::motherboard(string model, string soket, string type_memory) 
 {
@@ -19,17 +19,19 @@ motherboard::~motherboard(){
 
 void motherboard::input()
 {
-	cout << "Ââåäèòå ìîäåëü, ñîêåò è òèï ïàìÿòè ìàò. ïëàòû (÷åðåç \"Enter\")\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¼Ð¾Ð´ÐµÐ»ÑŒ, ÑÐ¾ÐºÐµÑ‚, Ñ‚Ð¸Ð¿ Ð¿Ð°Ð¼ÑÑ‚Ð¸ Ð¸ Ñ†ÐµÐ½Ñƒ Ð¼Ð°Ñ‚. Ð¿Ð»Ð°Ñ‚Ñ‹ (Ñ‡ÐµÑ€ÐµÐ· \"Enter\")\n";
 	cin >> model;
 	cin >> soket;
 	cin >> type_memory;
+	cin >> price;
 }
 
 void motherboard::output()
 {
-	cout << "\nÌàòåðèíñêàÿ ïëàòà\n\t-ìîäåëü: " << model;
-	cout << "\n\t-ñîêåò: " << soket;
-	cout << "\n\t-òèï ïàìÿòè: " << type_memory;
+	cout << "\nÐœÐ°Ñ‚ÐµÑ€Ð¸Ð½ÑÐºÐ°Ñ Ð¿Ð»Ð°Ñ‚Ð°\n\t-Ð¼Ð¾Ð´ÐµÐ»ÑŒ: " << model;
+	cout << "\n\t-ÑÐ¾ÐºÐµÑ‚: " << soket;
+	cout << "\n\t-Ñ‚Ð¸Ð¿ Ð¿Ð°Ð¼ÑÑ‚Ð¸: " << type_memory;
+	cout << "\n\t-Ñ†ÐµÐ½Ð°: " << price;
 }
 
 void motherboard::set_model(string model)
@@ -60,4 +62,12 @@ string motherboard::get_soket()
 string motherboard::get_type_memory()
 {
 	return type_memory;
+}
+
+void motherboard::null_model()
+{
+	if (model == "-")
+	{
+		throw "ÐÐµÑ‚ Ð²Ð²ÐµÐ´ÐµÐ½Ð° Ð¼Ð¾Ð´ÐµÐ»ÑŒ Ð¼Ð°Ñ‚.Ð¿Ð»Ð°Ñ‚Ñ‹";
+	}
 }

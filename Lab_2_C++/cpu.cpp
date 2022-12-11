@@ -1,4 +1,4 @@
-#include "cpu.h"
+Ôªø#include "cpu.h"
 
 cpu::cpu(int amount_core, double clock_rate, int power, string model, string soket)
 {
@@ -22,21 +22,23 @@ cpu::~cpu(){
 
 void cpu::input()
 {
-	cout << "¬‚Â‰ËÚÂ ÏÓ‰ÂÎ¸, ÒÓÍÂÚ, ÍÓÎ-‚Ó ˇ‰Â, ˜‡ÒÚÓÚÛ Ë ˝ÌÂ„ÓÔÓÚÂ·ÎÂÌËÂ ÔÓˆÂÒÒÓ‡ (˜ÂÂÁ \"Enter\")\n";
+	cout << "–í–≤–µ–¥–∏—Ç–µ –º–æ–¥–µ–ª—å, —Å–æ–∫–µ—Ç, –∫–æ–ª-–≤–æ —è–¥–µ—Ä, —á–∞—Å—Ç–æ—Ç—É, —ç–Ω–µ—Ä–≥–æ–ø—Ä–æ—Ç—Ä–µ–±–ª–µ–Ω–∏–µ –∏ —Ü–µ–Ω—É –ø—Ä–æ—Ü–µ—Å—Å–æ—Ä–∞  (—á–µ—Ä–µ–∑ \"Enter\")\n";
 	cin >> model;
 	cin >> soket;
 	cin >> amount_core;
 	cin >> clock_rate;
 	cin >> power;
+	cin >> price;
 }
 
 void cpu::output()
 {
-	cout << "\nœÓˆÂÒÒÓ\n\t-ÏÓ‰ÂÎ¸: " << model;
-	cout << "\n\t-ÒÓÍÂÚ: " << soket;
-	cout << "\n\t-ÍÓÎ-‚Ó ˇ‰Â: " << amount_core;
-	cout << "\n\t-˜‡ÒÚÓÚ‡: " << clock_rate;
-	cout << "\n\t-˝ÌÂ„ÓÔÓÚÂ·ÎÂÌËÂ: " << power;
+	cout << "\n–ü—Ä–æ—Ü–µ—Å—Å–æ—Ä\n\t-–º–æ–¥–µ–ª—å: " << model;
+	cout << "\n\t-—Å–æ–∫–µ—Ç: " << soket;
+	cout << "\n\t-–∫–æ–ª-–≤–æ —è–¥–µ—Ä: " << amount_core;
+	cout << "\n\t-—á–∞—Å—Ç–æ—Ç–∞: " << clock_rate;
+	cout << "\n\t-—ç–Ω–µ—Ä–≥–æ–ø–æ—Ç—Ä–µ–±–ª–µ–Ω–∏–µ: " << power;
+	cout << "\n\t-—Ü–µ–Ω–∞: " << price;
 }
 
 void cpu::set_amount_core(int amount_core)
@@ -87,4 +89,39 @@ string cpu::get_model()
 string cpu::get_soket()
 {
 	return soket;
+}
+
+double* cpu::flops()
+{
+	double* flops = new double;
+	*flops = 64 * get_amount_core() * get_clock_rate();
+	return flops;
+}
+
+cpu cpu::operator+(double a) //–ø–µ—Ä–µ–≥—Ä—É–∑–∫–∞ +
+{
+	cpu b;
+	b.clock_rate = this->amount_core + a;
+	return b;
+}
+
+cpu& cpu::operator++() //–ø–µ—Ä–µ–≥—Ä—É–∑–∫–∞ ++
+{
+	this->clock_rate++;
+	return *this;
+}
+
+cpu cpu::operator++(int unused) //++ –ø–µ—Ä–µ–≥—Ä—É–∑–∫–∞
+{
+	cpu a = *this;
+	++*this;
+	return a;
+}
+
+void cpu::null_model()
+{
+	if (model == "-")
+	{
+		throw "–ù–µ—Ç –≤–≤–µ–¥–µ–Ω–∞ –º–æ–¥–µ–ª—å –¶–ü–£";
+	}
 }

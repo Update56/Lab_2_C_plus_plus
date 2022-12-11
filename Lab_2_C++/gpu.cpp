@@ -1,4 +1,4 @@
-#include "gpu.h"
+ï»¿#include "gpu.h"
 
 gpu::gpu(int clock_rate, int bandwidth, int memory_size, int power, string model)
 {
@@ -22,21 +22,23 @@ gpu::~gpu(){
 
 void gpu::input()
 {
-	cout << "Ââåäèòå ìîäåëü, ÷àñòîòó, ïðîïóñêíóþ ñïîñîáíîñòü ïàìÿòè, îáú¸ì ïàìÿòè è ýíåðãîïðîòðåáëåíèå âèäåîêàðòû (÷åðåç \"Enter\")\n";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¼Ð¾Ð´ÐµÐ»ÑŒ, Ñ‡Ð°ÑÑ‚Ð¾Ñ‚Ñƒ, Ð¿Ñ€Ð¾Ð¿ÑƒÑÐºÐ½ÑƒÑŽ ÑÐ¿Ð¾ÑÐ¾Ð±Ð½Ð¾ÑÑ‚ÑŒ Ð¿Ð°Ð¼ÑÑ‚Ð¸, Ð¾Ð±ÑŠÑ‘Ð¼ Ð¿Ð°Ð¼ÑÑ‚Ð¸, ÑÐ½ÐµÑ€Ð³Ð¾Ð¿Ñ€Ð¾Ñ‚Ñ€ÐµÐ±Ð»ÐµÐ½Ð¸Ðµ Ð¸ Ñ†ÐµÐ½Ñƒ Ð²Ð¸Ð´ÐµÐ¾ÐºÐ°Ñ€Ñ‚Ñ‹ (Ñ‡ÐµÑ€ÐµÐ· \"Enter\")\n";
 	cin >> model;
 	cin >> clock_rate;
 	cin >> bandwidth;
 	cin >> memory_size;
 	cin >> power;
+	cin >> price;
 }
 
 void gpu::output()
 {
-	cout << "\nÂèäåîêàðòà\n\t-ìîäåëü: " << model;
-	cout << "\n\t-÷àñòîòà: " << clock_rate;
-	cout << "\n\t-ïðîïóñêíàÿ ñïîñîáíîñòü ïàìÿòè: " << bandwidth;
-	cout << "\n\t-îáú¸ì ïàìÿòè: " << memory_size;
-	cout << "\n\t-ýíåðãîïîòðåáëåíèå: " << power;
+	cout << "\nÐ’Ð¸Ð´ÐµÐ¾ÐºÐ°Ñ€Ñ‚Ð°\n\t-Ð¼Ð¾Ð´ÐµÐ»ÑŒ: " << model;
+	cout << "\n\t-Ñ‡Ð°ÑÑ‚Ð¾Ñ‚Ð°: " << clock_rate;
+	cout << "\n\t-Ð¿Ñ€Ð¾Ð¿ÑƒÑÐºÐ½Ð°Ñ ÑÐ¿Ð¾ÑÐ¾Ð±Ð½Ð¾ÑÑ‚ÑŒ Ð¿Ð°Ð¼ÑÑ‚Ð¸: " << bandwidth;
+	cout << "\n\t-Ð¾Ð±ÑŠÑ‘Ð¼ Ð¿Ð°Ð¼ÑÑ‚Ð¸: " << memory_size;
+	cout << "\n\t-ÑÐ½ÐµÑ€Ð³Ð¾Ð¿Ð¾Ñ‚Ñ€ÐµÐ±Ð»ÐµÐ½Ð¸Ðµ: " << power;
+	cout << "\n\t-Ñ†ÐµÐ½Ð°: " << price;
 }
 
 void gpu::set_clock_rate(int clock_rate)
@@ -89,3 +91,16 @@ int gpu::get_bandwidt()
 	return bandwidth;
 }
 
+double& gpu::hash_rate(double& hash)
+{
+	hash = get_clock_rate() * 0.04;
+	return hash;
+}
+
+void gpu::null_model()
+{
+	if (model == "-")
+	{
+		throw "ÐÐµÑ‚ Ð²Ð²ÐµÐ´ÐµÐ½Ð° Ð¼Ð¾Ð´ÐµÐ»ÑŒ Ð“ÐŸÐ£";
+	}
+}

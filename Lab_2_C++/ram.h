@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <string.h>
 
@@ -11,10 +11,11 @@ private:
 	int memory_size;
 	string model;
 	string type_memory;
+	int price;
 
 public:
 	ram(int clock_rate, int memory_size, string model, string type_memory);
-	ram(int memory_saze);
+	ram(int memory_size);
 	ram();
 	~ram();
 	void input();
@@ -27,4 +28,10 @@ public:
 	int get_memory_size();
 	string get_model();
 	string get_type_memory();
+	friend int get_price(ram a);
+	friend int get_price(ram a)
+	{
+		return a.price;
+	}
+	void null_model();
 };
